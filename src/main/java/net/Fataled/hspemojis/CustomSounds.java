@@ -22,5 +22,4 @@ public class CustomSounds {
     public static void initialize(){
         CustomSounds.LOGGER.info("Registering " + CustomSounds.modID + " Sounds");
     }
-
 }
