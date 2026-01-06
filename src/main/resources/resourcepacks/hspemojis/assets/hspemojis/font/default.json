@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "hspemojis:font/emojis.png",
+      "ascent": 8,
+      "height": 16,
+      "chars": ["\ue03a\ue03f\ue03d\ue03c\ue043"]
+    }
+  ]
+}
