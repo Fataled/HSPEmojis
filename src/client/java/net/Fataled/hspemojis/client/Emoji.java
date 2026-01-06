@@ -1,4 +1,4 @@
-package net.Fataled.hspemojis;
+package net.Fataled.hspemojis.client;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.sound.SoundEvent;

@@ -1,0 +1,18 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "hspemojis:font/emojis.png",
+      "ascent": 92,
+      "height": 96,
+      "chars": [
+        "\ue000"
+      ]
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:default"
+    }
+  ]
+}
+

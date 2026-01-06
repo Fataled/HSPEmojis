@@ -1,4 +1,4 @@
-package net.Fataled.hspemojis;
+package net.Fataled.hspemojis.client;
 
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class CustomSounds {
-    private static final String modID = "hspemojis";
+    private static final String modID = "assets/hspemojis";
     private static final Logger LOGGER = LogManager.getLogger();
     private CustomSounds() {}
 
