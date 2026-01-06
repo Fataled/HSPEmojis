@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "hspemojis",
+  "version": "${version}",
+  "name": "HSPEmojis",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/hspemojis/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.Fataled.hspemojis.client.HspemojisDataGenerator"
+    ],
+    "client": [
+      "net.Fataled.hspemojis.client.HspemojisClient"
+    ],
+    "main": [
+      "net.Fataled.hspemojis.Hspemojis"
+    ]
+  },
+  "mixins": [
+    "hspemojis.mixins.json",
+    {
+      "config": "hspemojis.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
