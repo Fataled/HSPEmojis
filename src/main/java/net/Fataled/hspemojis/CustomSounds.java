@@ -14,6 +14,8 @@ public class CustomSounds {
 
     // Register a custom Sound
     public static SoundEvent registerSound(String id){
+        if (id == null) {return null;}
+
         Identifier identifier = Identifier.of(modID, id);
         SoundEvent event = SoundEvent.of(identifier);
         return Registry.register(Registries.SOUND_EVENT, identifier, event);
