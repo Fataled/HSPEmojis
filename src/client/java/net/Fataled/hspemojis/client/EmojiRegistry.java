@@ -26,4 +26,11 @@ public final class EmojiRegistry {
             Map.entry(":slurp:", "\uE911"),
             Map.entry(":uno:", "\uE912")
     );
+
+    public static boolean containsAnyToken(String s) {
+    for (String token : Tokens.keySet()) {
+        if (s.contains(token)) return true;
+    }
+    return false;
+}
 }

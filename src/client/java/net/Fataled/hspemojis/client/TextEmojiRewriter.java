@@ -49,7 +49,21 @@ public final class TextEmojiRewriter {
 
             // insert glyph with same styling but emoji font
             String glyph = EmojiRegistry.Tokens.get(m.token);
-            out.append(Text.literal(glyph).setStyle(baseStyle.withFont(EmojiText.EMOJI_FONT)));
+            out.append(
+    Text.literal(glyph).styled(style ->
+        Style.EMPTY
+            .withColor(TextColor.fromRgb(0xFFFFFF)) // force neutral
+            .withBold(false)
+            .withItalic(false)
+            .withUnderline(false)
+            .withStrikethrough(false)
+            .withObfuscated(false)
+            .withFont(EmojiText.EMOJI_FONT)
+    )
+);
+
+
+
 
             i = m.start + m.token.length();
         }
@@ -80,5 +94,7 @@ public final class TextEmojiRewriter {
     }
 
     private record Match(int start, String token) {}
+
+
 }
 

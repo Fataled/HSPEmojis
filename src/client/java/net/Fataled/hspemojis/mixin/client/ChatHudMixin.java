@@ -1,6 +1,7 @@
 package net.Fataled.hspemojis.mixin.client;
 
 import net.Fataled.hspemojis.client.EmojiParser;
+import net.Fataled.hspemojis.client.EmojiRegistry;
 import net.Fataled.hspemojis.client.TextEmojiRewriter;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.Text;
@@ -23,7 +24,7 @@ public class ChatHudMixin {
             require = 0
     )
     private Text hspemojis$rewriteSimple(Text message) {
-        if (!message.getString().contains(":meow:")) return message;
+        if (!EmojiRegistry.containsAnyToken(message.getString())) return message;
         return TextEmojiRewriter.rewrite(message);
     }
 
@@ -36,7 +37,7 @@ public class ChatHudMixin {
     )
     private Text hspemojis$rewriteSigned(Text message) {
         String s = message.getString();
-        if (!s.contains(":meow:")) return message;
+        if (!EmojiRegistry.containsAnyToken(s)) return message;
         return EmojiParser.parse(s);
     }
 
