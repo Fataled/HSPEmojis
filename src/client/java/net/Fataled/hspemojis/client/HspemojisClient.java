@@ -11,8 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class HspemojisClient implements ClientModInitializer {
@@ -36,9 +35,8 @@ public class HspemojisClient implements ClientModInitializer {
         });
 
         CustomSounds.initialize();
-        Emoji Meow = new Emoji(":meow:", "\uE000", null);
-        List<Emoji> emojis = new ArrayList<>();
-        emojis.add(Meow);
+
+        List<Emoji> emojis = getEmojis();
 
         ClientReceiveMessageEvents.MODIFY_GAME.register((Text message, boolean overlay) -> {
             String raw = message.getString();
@@ -70,5 +68,22 @@ public class HspemojisClient implements ClientModInitializer {
             // Otherwise return the modified text
             return Text.literal(newMsg);
                 });
+    }
+
+    private static @NotNull List<Emoji> getEmojis() {
+        return List.of(
+        new Emoji(":meow:", "\uE000", null),
+        new Emoji(":fu:", "\uE001", null),
+        new Emoji(":pol:", "\uE002", null),
+        new Emoji(":artempetuh:", "\uE003", null),
+        new Emoji(":true:", "\uE004", null),
+        new Emoji(":false:", "\uE005", null),
+        new Emoji(":cordeliaheart:", "\uE006", null),
+        new Emoji(":fear:", "\uE007", null),
+        new Emoji(":ashbaby:", "\uE008", null),
+        new Emoji(":baer", "\uE009", null),
+        new Emoji(":aswhat", "\uE010", null),
+        new Emoji(":donot:", "\uE011", null)
+        );
     }
 }

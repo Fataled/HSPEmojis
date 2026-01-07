@@ -1,0 +1,25 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "minecraft:font/meow.png",
+      "height": 16,
+      "ascent": 12,
+      "chars": ["\uE000"]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:font/fu.png",
+      "height": 16,
+      "ascent": 12,
+      "chars": ["\uE001"]
+    },
+    {
+      "type": "bitmap",
+      "file": "minecraft:font/pol.png",
+      "height": 16,
+      "ascent": 12,
+      "chars": ["\uE002"]
+    }
+  ]
+}
