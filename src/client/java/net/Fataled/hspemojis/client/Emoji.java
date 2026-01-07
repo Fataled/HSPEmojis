@@ -29,5 +29,9 @@ public class Emoji {
 
     }
 
+    private static String cp(int codePoint){
+        return new String(Character.toChars(codePoint));
+    }
+
     // Playing sounds seems to come from the world so im guessing MAYBE I need to create a new play Sound handler
 }

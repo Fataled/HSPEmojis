@@ -21,12 +21,9 @@
     ]
   },
   "mixins": [
-    "hspemojis.mixins.json",
-    {
-      "config": "hspemojis.client.mixins.json",
-      "environment": "client"
-    }
-  ],
+  "hspemojis.mixins.json",
+  "hspemojis.client.mixins.json"
+],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
