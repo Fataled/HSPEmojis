@@ -132,6 +132,20 @@
   "height": 12,
   "ascent": 10,
   "chars": ["\uE912"]
+},
+{
+  "type": "bitmap",
+  "file": "hspemojis:font/doom.png",
+  "height": 12,
+  "ascent": 10,
+  "chars": ["\uE913"]
+},
+{
+  "type": "bitmap",
+  "file": "hspemojis:font/donot.png",
+  "height": 12,
+  "ascent": 10,
+  "chars": ["\uE914"]
 }
   ]
 }

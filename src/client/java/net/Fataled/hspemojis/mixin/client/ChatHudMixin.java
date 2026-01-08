@@ -1,5 +1,6 @@
 package net.Fataled.hspemojis.mixin.client;
 
+import net.Fataled.hspemojis.client.Emoji;
 import net.Fataled.hspemojis.client.EmojiParser;
 import net.Fataled.hspemojis.client.EmojiRegistry;
 import net.Fataled.hspemojis.client.TextEmojiRewriter;
@@ -8,6 +9,8 @@ import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import static net.Fataled.hspemojis.client.TextEmojiRewriter.findEmojisIn;
+
 
 @Mixin(ChatHud.class)
 public class ChatHudMixin {
@@ -25,7 +28,18 @@ public class ChatHudMixin {
     )
     private Text hspemojis$rewriteSimple(Text message) {
         if (!EmojiRegistry.containsAnyToken(message.getString())) return message;
-        return TextEmojiRewriter.rewrite(message);
+        Text finalOutpot = TextEmojiRewriter.rewrite(message);
+
+        if(!shouldPlayForMessage(message.getString())) return finalOutpot;
+
+        System.out.println("Checking if it found an emoji "+ findEmojisIn(message.getString()));
+
+        for (Emoji e: findEmojisIn(message.getString())){
+            e.playEmoji();
+            System.out.println("[HSPEMOJI] Played a sound");
+        }
+
+    return finalOutpot;
     }
 
     // Some versions use a longer overload. This keeps you compatible without guessing.
@@ -40,6 +54,22 @@ public class ChatHudMixin {
         if (!EmojiRegistry.containsAnyToken(s)) return message;
         return EmojiParser.parse(s);
     }
+
+    private static final java.util.Map<String, Long> CHAT_SOUND_DEDUPE = new java.util.HashMap<>();
+    private static final long DEDUPE_MS = 750;
+
+    private static boolean shouldPlayForMessage(String key) {
+        long now = System.currentTimeMillis();
+        Long last = CHAT_SOUND_DEDUPE.get(key);
+        if (last != null && (now - last) < DEDUPE_MS) return false;
+
+        CHAT_SOUND_DEDUPE.put(key, now);
+
+        if (CHAT_SOUND_DEDUPE.size() > 300) CHAT_SOUND_DEDUPE.clear();
+        return true;
+    }
+
+
 
 
 }
