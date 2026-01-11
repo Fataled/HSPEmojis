@@ -47,7 +47,7 @@ public final class EmojiRegistry {
         return List.of(
         new Emoji(":meow:", "\uE900", SoundEvents.ENTITY_CAT_AMBIENT),
         new Emoji(":fu:", "\uE901", null),
-        new Emoji(":pol:", "\uE902", null),
+        new Emoji(":pointandlaugh:", "\uE902", null),
         new Emoji(":artempetuh:", "\uE903", null),
         new Emoji(":true:", "\uE904", null),
         new Emoji(":cordeliaheart:", "\uE905", null),
@@ -58,14 +58,18 @@ public final class EmojiRegistry {
         new Emoji(":automaid:", "\uE90A", null),
         new Emoji(":buggati:", "\uE90B", null),
         new Emoji(":business:", "\uE90C", null),
-        new Emoji(":freedom:", "\uE90D", null),
+        new Emoji(":icanfinallyki:", "\uE90D", null),
         new Emoji(":hemorrhage:", "\uE90E", null),
         new Emoji(":nyabones:", "\uE90F", null),
         new Emoji(":pog:", "\uE910", null),
         new Emoji(":slurp:", "\uE911", SoundEvents.ENTITY_GENERIC_DRINK.value()),
         new Emoji(":uno:", "\uE912", null),
         new Emoji(":doom:", "\uE913", SoundEvents.AMBIENT_CAVE.value()),
-        new Emoji(":donot:", "\uE914", SoundEvents.ENTITY_PILLAGER_AMBIENT)
+        new Emoji(":donot:", "\uE914", SoundEvents.ENTITY_PILLAGER_AMBIENT),
+        new Emoji(":greed:", "\uE915", null),
+        new Emoji(":application:", "\uE916", null) ,
+        new Emoji(":plus1", "\uE917", null)
+
         );
     }
 

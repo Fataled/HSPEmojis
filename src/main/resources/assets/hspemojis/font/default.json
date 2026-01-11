@@ -3,149 +3,171 @@
     {
   "type": "bitmap",
   "file": "hspemojis:font/meow.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE900"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/fu.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE901"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/pol.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE902"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/artempetuh.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE903"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/true.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE904"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/cordeliaheart.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE905"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/fear.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE906"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/ashbaby.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE907"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/baer.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE908"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/aswhat.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE909"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/automaid.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90A"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/buggati.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90B"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/business.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90C"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/freedom.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90D"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/hemorrhage.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90E"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/nyabones.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE90F"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/pog.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE910"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/slurp.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE911"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/uno.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE912"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/doom.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE913"]
 },
 {
   "type": "bitmap",
   "file": "hspemojis:font/donot.png",
-  "height": 12,
-  "ascent": 10,
+  "height": 10,
+  "ascent": 8,
   "chars": ["\uE914"]
+},
+{
+  "type": "bitmap",
+  "file": "hspemojis:font/greed.png",
+  "height": 10,
+  "ascent": 8,
+  "chars": ["\uE915"]
+},
+{
+  "type": "bitmap",
+  "file": "hspemojis:font/application.png",
+  "height": 10,
+  "ascent": 8,
+  "chars": ["\uE916"]
+},
+{
+  "type": "bitmap",
+  "file": "hspemojis:font/plus1.png",
+  "height": 10,
+
+  "ascent": 8,
+  "chars": ["\uE917"]
 }
   ]
 }

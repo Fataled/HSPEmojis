@@ -30,7 +30,7 @@ public class ChatHudMixin {
         if (!EmojiRegistry.containsAnyToken(message.getString())) return message;
         Text finalOutpot = TextEmojiRewriter.rewrite(message);
 
-        if(!shouldPlayForMessage(message.getString())) return finalOutpot;
+        if(!shouldPlayForMessage(message.getString()) || message.toString().contains("List of Emojis:")) return finalOutpot;
 
         System.out.println("Checking if it found an emoji "+ findEmojisIn(message.getString()));
 

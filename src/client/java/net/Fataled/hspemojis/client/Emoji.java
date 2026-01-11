@@ -31,7 +31,7 @@ public class Emoji {
 
     public String getEmojiName(){return EmojiName;}
 
-
+    public String getEmojiNameClean(){return this.EmojiName.replace(":", "");}
 
 
     // Playing sounds seems to come from the world so im guessing MAYBE I need to create a new play Sound handler

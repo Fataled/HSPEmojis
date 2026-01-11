@@ -1,6 +1,8 @@
 package net.Fataled.hspemojis.client;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
+import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,7 +12,11 @@ public class HspemojisClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        CustomSounds.initialize();
+        ClientLifecycleEvents.CLIENT_STARTED.register(minecraftClient -> {
+            Commands.registerCommands();
+            CustomSounds.initialize();
+        });
+
     }
 
 }
