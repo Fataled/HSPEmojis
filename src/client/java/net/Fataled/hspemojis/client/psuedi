@@ -1,0 +1,40 @@
+function applyEmojiAnimationToTextComponent(textComponent):
+    // Convert Text → plain string with style tracking, or walk its children
+    // Pseudocode for simple "plain string" case:
+
+    original = textComponent.getString()
+    if original is empty:
+        return textComponent
+
+    builder = new StringBuilder()
+
+    // iterate by codepoints, not chars
+    iterator = original.codePoints().iterator()
+
+    while iterator.hasNext():
+        int cp = iterator.next()
+
+        if ANIMATED_EMOJI_FRAMES.containsKey(cp):
+            frames = ANIMATED_EMOJI_FRAMES.get(cp)
+
+            frameIndex = (globalTick / FRAME_DURATION_TICKS) % frames.length
+            int frameCodepoint = frames[frameIndex]
+
+            builder.appendCodePoint(frameCodepoint)
+        else:
+            builder.appendCodePoint(cp)
+
+    animatedString = builder.toString()
+
+    // Re-wrap this in a Text object with same base style
+    return Text.literal(animatedString)
+
+    // Pseudocode: mixin or hook into ChatHud.render()
+    function onChatHudRender(drawContext ctx, float tickDelta) {
+        for each ChatLine line in visibleChatLines:
+            Text originalText = line.getText()
+
+            Text animatedText = applyEmojiAnimationToTextComponent(originalText)
+
+            drawText(ctx, animatedText, line.x, line.y)
+    }

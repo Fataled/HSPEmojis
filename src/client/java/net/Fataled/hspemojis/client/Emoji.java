@@ -21,6 +21,7 @@ public class Emoji {
 
         if (this.CustomSound == null){return;}
 
+        assert mc.player != null;
         mc.player.playSound(this.CustomSound, 1.0f, 1.0f);
 
     }

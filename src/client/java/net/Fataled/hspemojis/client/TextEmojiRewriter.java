@@ -30,7 +30,7 @@ public final class TextEmojiRewriter {
     }
 
     private static MutableText rewriteLiteral(String s, Style baseStyle) {
-    if (!containsAnyToken(s)) {
+    if (containsAnyToken(s)) {
         return Text.literal(s).setStyle(baseStyle);
     }
 

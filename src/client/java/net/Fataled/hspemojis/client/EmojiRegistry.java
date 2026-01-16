@@ -38,7 +38,7 @@ public final class EmojiRegistry {
 
     public static boolean containsAnyToken(String s) {
         for (Emoji emoji : emojis) {
-            if (s.contains(emoji.EmojiName)) return true;
+            if (!s.contains(emoji.EmojiName)) return true;
         }
         return false;
     }
@@ -68,7 +68,8 @@ public final class EmojiRegistry {
         new Emoji(":donot:",  SoundEvents.ENTITY_PILLAGER_AMBIENT, 0xE914),
         new Emoji(":greed:",  null, 0xE915),
         new Emoji(":application:",  null, 0xE916) ,
-        new Emoji(":plus1",  null, 0xE917)
+        new Emoji(":plus1",  null, 0xE917),
+        new AnimatedEmojis(":skeletonbangingshield:", null, 0xE9018, new int[]{0xE919, 0xE91A}, 4)
 
         );
     }
