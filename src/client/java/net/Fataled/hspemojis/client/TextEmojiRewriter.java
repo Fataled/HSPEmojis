@@ -54,7 +54,7 @@ public final class TextEmojiRewriter {
         String token = emoji.getEmojiName();
 
         // glyph we insert like "\uE900"
-        String glyph = emoji.getEmojiId();
+        String glyph = emoji.asString();
 
         out.append(
             Text.literal(glyph).styled(style ->

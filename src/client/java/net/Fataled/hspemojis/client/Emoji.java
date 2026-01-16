@@ -5,17 +5,13 @@ import net.minecraft.sound.SoundEvent;
 
 public class Emoji {
     public String EmojiName;
-    public String EmojiId;
     public SoundEvent CustomSound;
+    public int BaseCodePoint;
 
-    public Emoji(String EmojiName, String EmojiId,  SoundEvent CustomSoundId) {
+    public Emoji(String EmojiName, SoundEvent CustomSoundId, int BaseCodePoint) {
         this.EmojiName = EmojiName;
-        this.EmojiId = EmojiId;
         this.CustomSound = CustomSoundId;
-    }
-
-    public String getEmojiId(){
-        return EmojiId;
+        this.BaseCodePoint = BaseCodePoint;
     }
 
     public void playEmoji() {
@@ -33,6 +29,18 @@ public class Emoji {
 
     public String getEmojiNameClean(){return this.EmojiName.replace(":", "");}
 
+    public boolean isAnimated(){return false;}
 
+    public int getRenderCodePoint(int tick){
+        return BaseCodePoint;
+    }
+
+    public char asChar(){
+        return (char) BaseCodePoint;
+    }
+
+    public String asString(){
+        return new String(Character.toChars(BaseCodePoint));
+    }
     // Playing sounds seems to come from the world so im guessing MAYBE I need to create a new play Sound handler
 }
