@@ -2,6 +2,9 @@ package net.Fataled.hspemojis.client;
 
 import net.minecraft.text.*;
 
+import java.util.PrimitiveIterator;
+
+import static net.Fataled.hspemojis.client.AnimatedEmojis.GlobalTick;
 import static net.Fataled.hspemojis.client.EmojiRegistry.*;
 
 public final class TextEmojiRewriter {
@@ -30,69 +33,70 @@ public final class TextEmojiRewriter {
     }
 
     private static MutableText rewriteLiteral(String s, Style baseStyle) {
-    if (containsAnyToken(s)) {
-        return Text.literal(s).setStyle(baseStyle);
-    }
-
-    MutableText out = Text.empty();
-    int i = 0;
-
-    while (i < s.length()) {
-        Match m = findNextToken(s, i);
-        if (m == null) {
-            out.append(Text.literal(s.substring(i)).setStyle(baseStyle));
-            break;
+        if (containsAnyToken(s)) {
+            return Text.literal(s).setStyle(baseStyle);
         }
 
-        if (m.start > i) {
-            out.append(Text.literal(s.substring(i, m.start)).setStyle(baseStyle));
+        MutableText out = Text.empty();
+        int i = 0;
+
+        while (i < s.length()) {
+            Match m = findNextToken(s, i);
+            if (m == null) {
+                out.append(Text.literal(s.substring(i)).setStyle(baseStyle));
+                break;
+            }
+
+            if (m.start > i) {
+                out.append(Text.literal(s.substring(i, m.start)).setStyle(baseStyle));
+            }
+
+            Emoji emoji = m.emoji();
+
+            // token in text like ":meow:"
+            String token = emoji.getEmojiName();
+
+            // glyph we insert like "\uE900"
+            String glyph = emoji.asString();
+            out.append(
+                    Text.literal(glyph).styled(style ->
+                            Style.EMPTY
+                                    .withColor(TextColor.fromRgb(0xFFFFFF))
+                                    .withBold(false)
+                                    .withItalic(false)
+                                    .withUnderline(false)
+                                    .withStrikethrough(false)
+                                    .withObfuscated(false)
+                                    .withFont(EmojiText.EMOJI_FONT)
+                    )
+            );
+
+            // move past the token we matched in the original string
+            i = m.start + token.length();
         }
 
-        Emoji emoji = m.emoji();
-
-        // token in text like ":meow:"
-        String token = emoji.getEmojiName();
-
-        // glyph we insert like "\uE900"
-        String glyph = emoji.asString();
-
-        out.append(
-            Text.literal(glyph).styled(style ->
-                Style.EMPTY
-                    .withColor(TextColor.fromRgb(0xFFFFFF))
-                    .withBold(false)
-                    .withItalic(false)
-                    .withUnderline(false)
-                    .withStrikethrough(false)
-                    .withObfuscated(false)
-                    .withFont(EmojiText.EMOJI_FONT)
-            )
-        );
-
-        // move past the token we matched in the original string
-        i = m.start + token.length();
+        return out;
     }
-
-    return out;
-}
 
     public static Match findNextToken(String s, int from) {
-    int bestIdx = -1;
-    Emoji bestEmoji = null;
+        int bestIdx = -1;
+        Emoji bestEmoji = null;
 
-    for (Emoji emoji : EMOJIS) {
-        String token = emoji.getEmojiName(); // ":meow:" token in the message
-        int idx = s.indexOf(token, from);
+        for (Emoji emoji : EMOJIS) {
+            String token = emoji.getEmojiName(); // ":meow:" token in the message
+            int idx = s.indexOf(token, from);
 
-        if (idx != -1 && (bestIdx == -1 || idx < bestIdx)) {
-            bestIdx = idx;
-            bestEmoji = emoji; // keep the matched emoji
+            if (idx != -1 && (bestIdx == -1 || idx < bestIdx)) {
+                bestIdx = idx;
+                bestEmoji = emoji; // keep the matched emoji
+            }
         }
+
+        return bestEmoji == null ? null : new Match(bestIdx, bestEmoji);
     }
 
-    return bestEmoji == null ? null : new Match(bestIdx, bestEmoji);
-}
-    public record Match(int start, Emoji emoji) {}
+    public record Match(int start, Emoji emoji) {
+    }
 
     public static java.util.Set<Emoji> findEmojisIn(String s) {
         java.util.Set<Emoji> found = new java.util.HashSet<>();
@@ -112,6 +116,32 @@ public final class TextEmojiRewriter {
         return found;
     }
 
+    public static Text appplyEmojiAnimations(Text textComponent) {
+        String original = textComponent.toString();
+        if (original.isEmpty()) {
+            return textComponent;
+        }
 
-}
+        StringBuilder builder = new StringBuilder();
+
+        PrimitiveIterator.OfInt iterator = original.codePoints().iterator();
+
+        while (iterator.hasNext()) {
+            int codePoints = iterator.next();
+            if (AnimatedEmojis.ANIMATED_GLOBAL_FRAMES.containsKey(codePoints)) {
+                int[] frames = AnimatedEmojis.ANIMATED_GLOBAL_FRAMES.get(codePoints);
+
+                int frameIndex = (GlobalTick / AnimatedEmojis.frameDurationTicks) % frames.length;
+                int frameCodePoint = frames[frameIndex];
+
+                builder.appendCodePoint(frameCodePoint);
+            } else {
+                builder.appendCodePoint(codePoints);
+            }
+        }
+        String animatedString = builder.toString();
+        return Text.literal(animatedString);
+        }
+    }
+
 

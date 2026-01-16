@@ -2,20 +2,28 @@ package net.Fataled.hspemojis.client;
 
 import net.minecraft.sound.SoundEvent;
 
-public class AnimatedEmojis extends Emoji{
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class AnimatedEmojis extends Emoji {
 
     private final int[] frames;
-    private final int frameDurationTicks;
+    public static final int frameDurationTicks = 5;
     public static int GlobalTick = 0;
+    public static Map<Integer, int[]> ANIMATED_GLOBAL_FRAMES = new HashMap<>();
+    public static List<AnimatedEmojis> animatedEmojis = new ArrayList<>();
 
-    public AnimatedEmojis(String EmojiName, SoundEvent CustomSound, int BaseCodePoint, int[] frames, int frameDurationTicks){
+    public AnimatedEmojis(String EmojiName, SoundEvent CustomSound, int BaseCodePoint, int[] frames) {
         super(EmojiName, CustomSound, BaseCodePoint);
         this.frames = frames;
-        this.frameDurationTicks = frameDurationTicks;
+
+        mapEmojisToFrames();
     }
 
     @Override
-    public boolean isAnimated(){
+    public boolean isAnimated() {
         return true;
     }
 
@@ -28,7 +36,14 @@ public class AnimatedEmojis extends Emoji{
         return frames[frameIndex];
     }
 
-    public static void onClientTick(){
-        GlobalTick ++;
+    public static void onClientTick() {
+        GlobalTick++;
+    }
+
+    public void mapEmojisToFrames() {
+        ANIMATED_GLOBAL_FRAMES.clear();
+        for (AnimatedEmojis animatedEmoji : animatedEmojis) {
+            ANIMATED_GLOBAL_FRAMES.put(animatedEmoji.BaseCodePoint, animatedEmoji.frames);
+        }
     }
 }

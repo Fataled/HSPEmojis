@@ -69,7 +69,7 @@ public final class EmojiRegistry {
         new Emoji(":greed:",  null, 0xE915),
         new Emoji(":application:",  null, 0xE916) ,
         new Emoji(":plus1",  null, 0xE917),
-        new AnimatedEmojis(":skeletonbangingshield:", null, 0xE9018, new int[]{0xE919, 0xE91A}, 4)
+        new AnimatedEmojis(":skeletonbangingshield:", null, 0xE9018, new int[]{0xE919, 0xE91A})
 
         );
     }
